@@ -1,0 +1,417 @@
+body {
+    background-color: #1E1F29;
+    color: #E0E0E0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    text-align: center;
+}
+
+.containerall {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.split {
+    padding: 20px;
+    overflow: auto;
+    overflow: hidden;
+}
+
+.timer-1 {
+    flex: 60%;
+    background-color: #1E1F29;
+}
+
+.timer-2 {
+    flex: 40%;
+    background-color: #1A1A20;
+}
+
+
+.split.timer-2 {
+    display: flex;
+    justify-content: center;
+    /* căn giữa ngang */
+    align-items: center;
+    /* căn giữa dọc */
+    height: 100vh;
+    /* chiếm toàn chiều cao khung nhìn */
+    position: relative;
+    overflow: hidden;
+    /* Ẩn thanh cuộn nếu cần */
+
+
+}
+
+
+
+.container {
+    text-align: center;
+
+    /* ...*/
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+.timer {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    left: 0;
+    top: 200px;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+    z-index: 1;
+
+}
+
+.progress-ring__circle {
+    stroke: #4caf50;
+    stroke-dasharray: 816;
+    /* 2 * PI * 130 (r = 130) */
+    stroke-dashoffset: 816;
+    transition: stroke-dashoffset 0.5s ease;
+
+}
+
+.time-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: white;
+    z-index: 2;
+    text-align: center;
+}
+
+
+
+
+.separator {
+    font-size: 5rem;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+/* Định dạng các nút Set nhanh */
+.quick-set {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    left: 0px;
+    top: 220px;
+
+}
+
+.set-time {
+    background-color: #d0e0ff;
+    border: 1px solid #c0c0c0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.set-time:hover {
+    background-color: #b0d0ff;
+    /* Đổi màu nền khi hover */
+    border-color: #909090;
+}
+
+.controls {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    left: 0px;
+    top: 220px;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: rgba(255, 246, 246, 0.874);
+    font-size: 24px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+#reset {
+    background-color: #0099FF;
+}
+
+#reset:hover {
+    background-color: #007ACC;
+}
+
+#startPause {
+    background-color: #dc1428;
+}
+
+/* Thanh màu trên cùng */
+.blue-red {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 913.5px;
+    height: 100px;
+    display: flex;
+
+}
+
+
+
+
+#blueTeam {
+    background-color: #1d85f4;
+}
+
+#redTeam {
+    background-color: #dc1428;
+}
+
+.team {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    height: 160px;
+
+}
+
+.editable-team {
+    outline: none;
+    /* Loại bỏ viền khi chỉnh sửa */
+    cursor: text;
+    /* Đổi con trỏ chuột khi hover vào */
+
+    display: inline-block;
+    /* Để phần tử co giãn theo nội dung */
+    min-width: 50px;
+    /* Đặt kích thước tối thiểu */
+    max-width: 100%;
+    /* Giới hạn chiều rộng */
+    font-size: 4rem;
+    /* Kích thước chữ mặc định */
+    text-align: center;
+    /* Căn giữa nội dung */
+
+}
+
+
+.container-dot {
+    top: 180px;
+    position: absolute;
+    display: flex;
+    z-index: 100;
+    gap: 250px;
+    padding: 10px 20px;
+    left: 90px;
+}
+
+
+.dot {
+    width: 45px;
+    height: 45px;
+    background-color: rgb(130, 130, 130);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.dot.active {
+    background-color: #FFFF00;
+
+}
+
+.team-dots {
+    display: flex;
+    gap: 40px;
+}
+
+
+
+.container-score {
+    top: 250px;
+    position: absolute;
+    display: flex;
+    z-index: 100;
+    gap: 200px;
+    padding: 10px 20px;
+    left: 70px;
+}
+
+.score-input {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    gap: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-score:hover .score-input {
+    visibility: visible;
+    /* Hiện khi hover */
+    opacity: 1;
+}
+
+.score {
+    width: 70px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    border-radius: 15%;
+    background-color: rgba(0, 255, 60, 0.942);
+    color: #ffff21;
+    cursor: pointer;
+
+
+
+
+}
+
+/* Ẩn mũi tên tăng/giảm trên trình duyệt Chrome, Edge, Safari */
+.score::-webkit-inner-spin-button,
+.score::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+/* Đổi màu khi focus */
+.score:focus {
+    outline: none;
+    background-color: rgb(233, 163, 72);
+}
+
+
+
+.container-show-Score {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    gap: 420px;
+    top: 350px;
+    left: 20px;
+
+}
+
+.showScoreBlue {
+    font-weight: bolder;
+    width: 220px;
+    height: 250px;
+    background-color: #007BFF;
+    /* Xanh dương đậm */
+    color: white;
+    border: 2px solid #FFFFFF;
+    /* Viền trắng để nổi bật */
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+    font-size: 280px;
+}
+
+.showScoreRed {
+    font-weight: bolder;
+    width: 220px;
+    height: 250px;
+    background-color: #DC3545;
+    /* Đỏ đậm */
+    color: white;
+    border: 2px solid #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 280px;
+}
+
+
+
+.quick-set {
+
+    display: none;
+    gap: 10px;
+    margin: 0;
+    top: 200px;
+
+}
+
+
+
+
+/*timer 2*/
+
+
+.simple-timer {
+    text-align: center;
+    margin-top: 100px;
+    text-align: center;
+    margin-top: 0;
+    max-height: 80%;
+}
+
+#simpleDisplay {
+    font-size: 140px;
+    margin: 20px 0;
+    font-weight: normal;
+
+}
+
+.simple-controls button {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
